@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+PATH_LOCAL=`pwd`
+
+# Password del database (root)
+PASS_DB=password
+
+# Nome del servizio col quale ci collegheremo
+# Se utilizzate il PC locale occorre inserire localhost
+DNS=example.local
+
+# Porta di connessione
+PORT_EXTERNAL=80
+
+# Path del database fisico di Mariadb
+PATH_DB=$PATH_LOCAL/data/db
+
+# Path di configurazione di Gazie
+PATH_CONFIG=$PATH_LOCAL/data/config
+
+
