@@ -17,8 +17,9 @@ mkdir -p $PATH_CONFIG
 cp -af gazie/config/config/gconfig.php $PATH_CONFIG/config_standard.php
 sed 's/3306/3307/' < $PATH_CONFIG/config_standard.php > $PATH_CONFIG/gconfig1.php 
 sed 's/localhost/db/' < $PATH_CONFIG/gconfig1.php > $PATH_CONFIG/gconfig2.php 
-sed "s/\$Password = \"\"/\$Password = \"$PASS_DB\"/" < $PATH_CONFIG/gconfig2.php > $PATH_CONFIG/gconfig.php 
-rm $PATH_CONFIG/config_standard.php $PATH_CONFIG/gconfig1.php $PATH_CONFIG/gconfig2.php
+sed "s/\"gazie/\"$NAME_DB/" < $PATH_CONFIG/gconfig2.php > $PATH_CONFIG/gconfig3.php 
+sed "s/\$Password = \"\"/\$Password = \"$PASS_DB\"/" < $PATH_CONFIG/gconfig3.php > $PATH_CONFIG/gconfig.php 
+rm $PATH_CONFIG/config_standard.php $PATH_CONFIG/gconfig1.php $PATH_CONFIG/gconfig2.php $PATH_CONFIG/gconfig3.php
 
 # Config DNS
 echo "Modify DNS..."
