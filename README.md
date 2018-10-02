@@ -43,7 +43,7 @@ Restore Database di Backup
 
 Se hai un backup da ripristinare puoi semplicemente editare:
 
-./restore <file-dump-gzip>
+./restore [ file-dump-gzip ]
 
 Il comando ripristina il database sul database Mariadb.
 

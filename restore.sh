@@ -6,6 +6,7 @@ source conf
 
 if [ "$DUMP_GZIP" == "" ]; then
 	echo "No dump database insert"
+	echo "Command: ./restore.sh <database.tar.gz>"	
 	exit 1;
 fi
 
@@ -17,7 +18,7 @@ if [ "VERIFY_GZIP" == "bad" ]; then
 	exit 1
 fi
 
-
+echo "Init import backup $DUMP_GZIP"
 zcat $DUMP_GZIP | docker exec  -i db  /usr/bin/mysql -uroot -p$PASS_DB $NAME_DB
 
 echo "Restore database succeded"
