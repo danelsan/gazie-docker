@@ -2,6 +2,8 @@
 
 
 PATH_LOCAL=`pwd`
+# GAZIE Version
+GAZIE_VERSION=7.11
 
 # Password del database (root)
 PASS_DB=password

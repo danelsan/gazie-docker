@@ -5,9 +5,9 @@ set -e
 
 # Download versions
 if [ ! -d "$PATH_LOCAL/gazie" ]; then
-  echo "Download Gazie 7.10"
-  curl -fsSL -o gazie.zip "https://sourceforge.net/projects/gazie/files/gazie/7.10/gazie7.10.zip/download"
-  echo "Unzip Gazie 7.10"
+  echo "Download Gazie $GAZIE_VERSION"
+  curl -fsSL -o gazie.zip "https://sourceforge.net/projects/gazie/files/gazie/$GAZIE_VERSION/gazie$GAZIE_VERSION.zip/download"
+  echo "Unzip Gazie $GAZIE_VERSION"
   unzip  -q gazie.zip  
 fi
 
