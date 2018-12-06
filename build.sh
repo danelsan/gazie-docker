@@ -29,14 +29,14 @@ sed "s/localhost/$DNS/" < $PATH_LOCAL/nginx/nginx.conf.example > $PATH_LOCAL/ngi
 echo "Build Nginx..."
 cd nginx
 mv ../gazie/ . 
-./build.sh
+./build.sh ${GAZIE_VERSION}
 mv gazie ..
 
 # Build PHP-FPM
 echo "Build PHP-FPM..."
 cd ../php-fpm
 mv ../gazie/ . 
-./build.sh
+./build.sh ${GAZIE_VERSION}
 mv gazie ..
 
 # Clean

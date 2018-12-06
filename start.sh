@@ -13,11 +13,11 @@ docker run -d -e MYSQL_ROOT_PASSWORD=$PASS_DB -v $PATH_DB:/var/lib/mysql --name 
 docker run -d --link db \
 	-v $PATH_CONFIG:/var/www/html/config/config \
 	-v $PATH_BACKUP:/var/www/html/data \
-	--name phpfpm gazie-docker
+	--name phpfpm gazie-docker:${GAZIE_VERSION}
 docker run -d --link phpfpm \
 	--name nginx \
 	-v $PATH_BACKUP:/var/www/html/data \
 	-p $PORT_EXTERNAL:80 \
-	gazie-nginx
+	gazie-nginx:${GAZIE_VERSION}
 
 
