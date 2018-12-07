@@ -4,12 +4,18 @@ source conf
 set -e
 
 # Download versions
-if [ ! -d "$PATH_LOCAL/gazie" ]; then
-  echo "Download Gazie $GAZIE_VERSION"
-  curl -fsSL -o gazie.zip "https://sourceforge.net/projects/gazie/files/gazie/$GAZIE_VERSION/gazie$GAZIE_VERSION.zip/download"
-  echo "Unzip Gazie $GAZIE_VERSION"
-  unzip  -q gazie.zip  
+if [ "$GAZIE_VERSION" == "dev" ]; then 
+  echo "Scarico versione GAZIE di Development: svn checkout https://svn.code.sf.net/p/gazie/code/trunk gazie"
+  svn checkout https://svn.code.sf.net/p/gazie/code/trunk gazie
+else
+  if [ ! -d "$PATH_LOCAL/gazie" ]; then
+    echo "Download Gazie $GAZIE_VERSION dal sito https://sourceforge.net/projects/gazie/files/gazie/$GAZIE_VERSION/gazie$GAZIE_VERSION.zip/download"
+    curl -fsSL -o gazie.zip "https://sourceforge.net/projects/gazie/files/gazie/$GAZIE_VERSION/gazie$GAZIE_VERSION.zip/download"
+    echo "Unzip Gazie $GAZIE_VERSION"
+    unzip  -q gazie.zip  
+  fi
 fi
+
 
 # Copy configuration and modify
 echo "Modify gconfig.php..."
