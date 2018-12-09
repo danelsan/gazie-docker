@@ -9,7 +9,7 @@ chmod -R 777 $PATH_BACKUP
 
 source stop.sh
 
-docker run -d -e MYSQL_ROOT_PASSWORD=$PASS_DB -v $PATH_DB:/var/lib/mysql --name db mariadb:10.2
+docker run -d -e MYSQL_ROOT_PASSWORD=$PASS_DB -v $PATH_DB:/var/lib/mysql --name db gazie-mariadb:${GAZIE_VERSION}
 docker run -d --link db \
 	-v $PATH_CONFIG:/var/www/html/config/config \
 	-v $PATH_BACKUP:/var/www/html/data \

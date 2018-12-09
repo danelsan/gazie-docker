@@ -3,6 +3,8 @@
 source conf
 set -e
 
+echo "Se hai modificato la versione di Gazie cancella la directory ./gazie"
+
 # Download versions
 if [ "$GAZIE_VERSION" == "dev" ]; then 
   echo "Scarico versione GAZIE di Development: svn checkout https://svn.code.sf.net/p/gazie/code/trunk gazie"
@@ -45,12 +47,17 @@ mv ../gazie/ .
 ./build.sh ${GAZIE_VERSION}
 mv gazie ..
 
+# Build Database in Strict-mode
+cd ../mariadb
+./build.sh ${GAZIE_VERSION}
+
+
 # Clean
 cd ..
 
 if [ -f "$PATH_LOCAL/gazie.zip" ]; then
-  echo "Delete gazie.zip"
-  rm gazie.zip
+  echo "Deleted gazie.zip"
+  rm $PATH_LOCAL/gazie.zip
 fi
 
 
