@@ -20,4 +20,6 @@ docker run -d --link phpfpm \
 	-p $PORT_EXTERNAL:80 \
 	gazie-nginx:${GAZIE_VERSION}
 
+./run_phpmyadmin.sh
+
 
