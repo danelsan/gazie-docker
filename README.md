@@ -47,4 +47,15 @@ Se hai un backup da ripristinare puoi semplicemente editare:
 
 Il comando ripristina il database sul database Mariadb.
 
+Esecuzione PHPMYADMIN
+---------------------
+
+Per utilizzare PHPMYADMIN occorre eseguire il file:
+
+./run_phpmyadmin.sh
+
+Si potrà poi consultare il database eseguendo:
+
+http://localhost:8080/
+
 
