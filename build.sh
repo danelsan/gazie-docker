@@ -3,7 +3,12 @@
 source conf
 set -e
 
-echo "Se hai modificato la versione di Gazie cancella la directory ./gazie"
+# Control gazie directory
+if [ -d "$PATH_LOCAL/gazie" ]; then
+  echo "Esiste la directory $PATH_LOCAL/gazie! La elimino!";
+  rm -rf $PATH_LOCAL/gazie
+  sleep 5
+fi
 
 # Download versions
 if [ "$GAZIE_VERSION" == "dev" ]; then 
