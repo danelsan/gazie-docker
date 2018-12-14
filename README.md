@@ -58,4 +58,18 @@ Si potrà poi consultare il database eseguendo:
 
 http://localhost:8080/
 
+Modificare i file PHP
+---------------------
+
+Se si deve testare la versione di gazie e modificare qualche file .php
+si può accedere all'immagine ove risiede Gazie con il seguente comando:
+
+docker exec  -ti phpfpm bash
+
+A questo punto comparirà la shell e si potranno editare i file con il
+come tools vim:
+
+Es:
+root@cdec42c9aa5c:/var/www/html# vi config/config/gconfig.php
+
 
