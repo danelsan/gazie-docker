@@ -72,4 +72,17 @@ come tools vim:
 Es:
 root@cdec42c9aa5c:/var/www/html# vi config/config/gconfig.php
 
+Sviluppo di Gazie Con Docker
+----------------------------
+
+Quando inserisci la versione di Gazie puoi semplicemente digitare
+
+$GAZIE_VERSION=dev
+
+Il software costruirà le macchine di web e server, menetre potrai aggiornare il software all'interno della cartella
+
+gazie/
+
+gestibile con il software svn.
+
 
