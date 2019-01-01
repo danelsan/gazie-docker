@@ -16,8 +16,13 @@ if [ "$GAZIE_VERSION" == "dev" ]; then
   svn checkout https://svn.code.sf.net/p/gazie/code/trunk gazie
 else
   if [ ! -d "$PATH_LOCAL/gazie" ]; then
-    echo "Download Gazie $GAZIE_VERSION dal sito https://sourceforge.net/projects/gazie/files/gazie/$GAZIE_VERSION/gazie$GAZIE_VERSION.zip/download"
-    curl -fsSL -o gazie.zip "https://sourceforge.net/projects/gazie/files/gazie/$GAZIE_VERSION/gazie$GAZIE_VERSION.zip/download"
+    if [ $GAZIE_VERSION == "7.15" ]; then
+      LINK_DOWNLOAD="https://downloads.sourceforge.net/project/gazie/gazie/gazie$GAZIE_VERSION.zip"
+    else
+      LINK_DOWNLOAD="https://sourceforge.net/projects/gazie/files/gazie/$GAZIE_VERSION/gazie$GAZIE_VERSION.zip/download"
+    fi
+    echo "Download Gazie $GAZIE_VERSION dal sito $LINK_DOWNLOAD"
+    curl -fsSL -o gazie.zip "$LINK_DOWNLOAD"
     echo "Unzip Gazie $GAZIE_VERSION"
     unzip  -q gazie.zip  
   fi
