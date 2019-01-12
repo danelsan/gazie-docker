@@ -4,7 +4,7 @@
 PATH_LOCAL=`pwd`
 # GAZIE Version
 # Example: GAZIE_VERSION=dev; GAZIE_VERSION=7.11; GAZIE_VERSION=7.9 
-GAZIE_VERSION=7.11
+GAZIE_VERSION=7.17
 
 # Password del database (root)
 PASS_DB=password

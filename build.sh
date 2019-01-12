@@ -32,12 +32,22 @@ fi
 # Copy configuration and modify
 echo "Modify gconfig.php..."
 mkdir -p $PATH_CONFIG
-cp -af gazie/config/config/gconfig.php $PATH_CONFIG/config_standard.php
-sed 's/3306/3307/' < $PATH_CONFIG/config_standard.php > $PATH_CONFIG/gconfig1.php 
-sed 's/localhost/db/' < $PATH_CONFIG/gconfig1.php > $PATH_CONFIG/gconfig2.php 
-sed "s/\"gazie/\"$NAME_DB/" < $PATH_CONFIG/gconfig2.php > $PATH_CONFIG/gconfig3.php 
-sed "s/\$Password = \"\"/\$Password = \"$PASS_DB\"/" < $PATH_CONFIG/gconfig3.php > $PATH_CONFIG/gconfig.php 
-rm $PATH_CONFIG/config_standard.php $PATH_CONFIG/gconfig1.php $PATH_CONFIG/gconfig2.php $PATH_CONFIG/gconfig3.php
+
+if [[ "$GAZIE_VERSION" < "7.16" ]]; then
+  # Valid for gazie version < 7.16
+  echo "Version < 7.16"
+  sed 's/3306/3307/' < gazie/config/config/gconfig.php | sed 's/localhost/db/' | sed "s/\"gazie/\"$NAME_DB/" | sed "s/\$Password = \"\"/\$Password = \"$PASS_DB\"/" > $PATH_CONFIG/gconfig.myconf.php
+  cp $PATH_CONFIG/gconfig.myconf.php $PATH_CONFIG/gconfig.php
+else
+  # Valid for gazie version >= 7.16
+  echo "Version >= 7.16"
+  cp -af gazie/config/config/gconfig.php $PATH_CONFIG/gconfig.php
+  sed 's/3306/3307/' < gazie/config/config/gconfig.myconf.default.php | sed 's/localhost/db/' | sed "s/'gazie/'$NAME_DB/" | sed "s/Password', '/Password', '$PASS_DB/" > $PATH_CONFIG/gconfig.myconf.php
+fi
+
+# Valid for gazie version < 7.16
+#sed 's/3306/3307/' < gazie/config/config/gconfig.php | sed 's/localhost/db/' | sed "s/\"gazie/\"$NAME_DB/" | sed "s/\$Password = \"\"/\$Password = \"$PASS_DB\"/" > $PATH_CONFIG/gconfig.myconf.php
+#cp $PATH_CONFIG/gconfig.myconf.php $PATH_CONFIG/gconfig.php
 
 # Config DNS
 echo "Modify DNS..."
