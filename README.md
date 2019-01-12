@@ -1,10 +1,16 @@
 Perché Gazie-Docker
 -------------------
+GAzie indica Gestione Aziendale.
+Il software è opensource e liberamente caricabile dal sito:
+
+https://sourceforge.net/p/gazie/code/HEAD/tree/trunk/
+
+Il sito ufficiale di GAzie è: http://gazie.devincentiis.it/
 
 Con Gazie-Docker puoi installare l'ultima versione
 stabile di Gazie in meno di 10 minuti.
 
-Hai la tua infrastruttura Gazie con NGINX, PHP-FPM e database MARIADB.
+Hai così la tua infrastruttura Gazie con NGINX, PHP-FPM e database MARIADB.
 
 
 Installazione
@@ -18,7 +24,7 @@ https://www.docker.com/
 
 Modificare il file di configurazione
 
-conf
+vi conf
 
 ed eseguire il build per creare le immagini Gazie-Docker, Gazie-Nginx
 
