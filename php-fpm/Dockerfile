@@ -30,6 +30,8 @@ RUN 	set -ex; \
 # All extension	
 RUN sed -i "/^;security.limit_extensions =.*/asecurity.limit_extensions = " /usr/local/etc/php-fpm.d/www.conf
 
+RUN touch /usr/local/etc/php/conf.d/uploads.ini \
+    && echo "upload_max_filesize = 100M;\npost_max_size = 100M;\nmax_execution_time = 3000;" >> /usr/local/etc/php/conf.d/uploads.ini
 #ENV APACHE_DOCUMENT_ROOT /var/www
 
 EXPOSE 9000
