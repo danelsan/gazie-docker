@@ -14,6 +14,7 @@ fi
 if [ "$GAZIE_VERSION" == "dev" ]; then 
   echo "Scarico versione GAZIE di Development: svn checkout https://svn.code.sf.net/p/gazie/code/trunk gazie"
   svn checkout https://svn.code.sf.net/p/gazie/code/trunk gazie
+  chmod -R 777 gazie
 else
   if [ ! -d "$PATH_LOCAL/gazie" ]; then
     if [ $GAZIE_VERSION == "7.15" ]; then
