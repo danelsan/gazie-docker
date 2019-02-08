@@ -10,14 +10,19 @@ server {
     try_files $uri $uri/index.php;
   }
 
-  location /modules/wiki {
+  location /modules/wiki/ {
     include       /etc/nginx/mime.types;
-    try_files $uri /modules/wiki/admin.php;
+    try_files $uri $uri?$args /modules/wiki/admin.php;
   }
 
   location ~ \.css {
     root /app;
     add_header  Content-Type    text/css;
+  }
+
+  location ~ \.ttf {
+    root /app;
+    add_header  Content-Type    font/ttf;
   }
   
   location ~ \.js {
