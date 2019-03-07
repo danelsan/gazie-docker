@@ -3,7 +3,8 @@ FROM php:7.2-fpm
 MAINTAINER Daniele Frulla <daniele.frulla@newstechnology.eu>
 
 RUN apt-get update && apt-get install -y \
-        libfreetype6-dev \
+        locales locales-all \
+	libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
 	unzip \ 
@@ -33,6 +34,10 @@ RUN sed -i "/^;security.limit_extensions =.*/asecurity.limit_extensions = " /usr
 RUN touch /usr/local/etc/php/conf.d/uploads.ini \
     && echo "upload_max_filesize = 100M;\npost_max_size = 100M;\nmax_execution_time = 3000;" >> /usr/local/etc/php/conf.d/uploads.ini
 #ENV APACHE_DOCUMENT_ROOT /var/www
+
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
 
 EXPOSE 9000
 
