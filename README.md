@@ -43,6 +43,21 @@ Per stoppare le immagini docker eseguire
 
 ./stop.sh
 
+Backup Database
+---------------
+
+Per effettuare il backup logico del database basta digitare
+
+./backup.sh [ nome-backup.sql ]
+
+Il risultato sarà un file sql, di tutte le tabelle e le righe
+del database.
+Se si vuole comprimere i backup aggiungere il comando
+
+gzip [ nome-backup.sql ]
+
+Il risultato è un file compresso .gz che potrà essere ripristinato.
+
 
 Restore Database di Backup
 --------------------------
