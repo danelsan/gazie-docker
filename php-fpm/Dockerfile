@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
         libxml2-dev \
         libxpm-dev \
         libxslt1-dev \
+	sendmail  \
         vim \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-install -j$(nproc) mysqli pdo pdo_mysql \
@@ -20,9 +21,19 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install -j$(nproc) zip 
 
-RUN apt-get update && apt-get install -y libc-client-dev libkrb5-dev && rm -r /var/lib/apt/lists/*
+RUN apt-get update \
+	&& apt-get install -y libc-client-dev libkrb5-dev \
+	&& apt-get -y autoclean \
+	&& apt-get -y autoremove \
+	&& make -C /etc/mail \
+	&& rm -r /var/lib/apt/lists/*
 
-RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl && docker-php-ext-install imap
+RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
+	&& docker-php-ext-install imap
+
+RUN /etc/init.d/sendmail reload
+RUN echo "php_admin_value[sendmail_path] = /usr/sbin/sendmail -t -i -X /var/log/sendmail/sendmail.log" >> /usr/local/etc/php-fpm.conf
+RUN echo -e "$(hostname -i)\t$(hostname) $(hostname).localhost" >> /etc/hosts
 
 COPY 	gazie /var/www/html
 RUN 	set -ex; \
@@ -35,9 +46,13 @@ RUN touch /usr/local/etc/php/conf.d/uploads.ini \
     && echo "upload_max_filesize = 100M;\npost_max_size = 100M;\nmax_execution_time = 3000;" >> /usr/local/etc/php/conf.d/uploads.ini
 #ENV APACHE_DOCUMENT_ROOT /var/www
 
+COPY php-mail.conf /usr/local/etc/php/conf.d/mail.ini
+
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
+
+RUN /etc/init.d/sendmail start
 
 EXPOSE 9000
 
