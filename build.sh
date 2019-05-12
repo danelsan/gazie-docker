@@ -23,7 +23,7 @@ else
       LINK_DOWNLOAD="https://sourceforge.net/projects/gazie/files/gazie/$GAZIE_VERSION/gazie$GAZIE_VERSION.zip/download"
     fi
     echo "Download Gazie $GAZIE_VERSION dal sito $LINK_DOWNLOAD"
-    if [ $http_proxy == "" ]; then
+    if [ "$http_proxy" == "" ]; then
 	curl -fsSL -o gazie.zip "$LINK_DOWNLOAD"
     else
 	curl -x $http_proxy -fsSL -o gazie.zip "$LINK_DOWNLOAD"
