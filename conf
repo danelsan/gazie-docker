@@ -28,5 +28,5 @@ PATH_BACKUP=$PATH_LOCAL/data/backup
 
 # Sourceforge https://sourceforge.net USER
 # User for connection svn
-USER_SOURCEFORCE=<username>
+USER_SOURCEFORGE=<username>
 
