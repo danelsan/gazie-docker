@@ -6,14 +6,14 @@ set -e
 # Control gazie directory
 if [ -d "$PATH_LOCAL/gazie" ]; then
   echo "Esiste la directory $PATH_LOCAL/gazie! La elimino!";
-  rm -rf $PATH_LOCAL/gazie
+#  rm -rf $PATH_LOCAL/gazie
   sleep 5
 fi
 
 # Download versions
 if [ "$GAZIE_VERSION" == "dev" ]; then 
   echo "Scarico versione GAZIE di Development: svn checkout https://svn.code.sf.net/p/gazie/code/trunk gazie"
-  svn checkout https://svn.code.sf.net/p/gazie/code/trunk gazie
+  svn checkout --username=$USER_SOURCEFORCE svn+ssh://$USER_SOURCEFORCE@svn.code.sf.net/p/gazie/code/trunk gazie-code
   chmod -R 777 gazie
 else
   if [ ! -d "$PATH_LOCAL/gazie" ]; then
