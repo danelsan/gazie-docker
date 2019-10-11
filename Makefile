@@ -17,6 +17,10 @@ start:
 stop:
 	./stop.sh
 
+## list:       List all docker images gazie into yout local system
+list:
+	docker images | grep gazie	
+
 ## clean:      Clean all data database and downloaded 
 clean:  
 	rm -rf gazie/
