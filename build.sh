@@ -1,7 +1,16 @@
 #!/bin/bash
 
 source conf
+
 set -e
+
+# Proxy configuration setting
+if [ "$HTTP_PROXY" != "" ]; then
+  export http_proxy="$HTTP_PROXY"
+fi
+if [ "$HTTPS_PROXY" != "" ]; then
+  export https_proxy="$HTTPS_PROXY"
+fi
 
 # Control gazie directory
 if [ -d "$PATH_LOCAL/gazie" ]; then

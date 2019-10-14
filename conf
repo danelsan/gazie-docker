@@ -1,6 +1,10 @@
 #!/bin/bash
 
 
+# PROXY Configuration
+#HTTP_PROXY=<url_proxy>
+#HTTPS_PROXY=<url_proxy>
+
 PATH_LOCAL=`pwd`
 # GAZIE Version
 # Example: GAZIE_VERSION=dev; GAZIE_VERSION=7.11; GAZIE_VERSION=7.9 
