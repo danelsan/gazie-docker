@@ -30,6 +30,7 @@ fi
 docker run -d --link phpfpm \
 	--name opencart \
 	--name nginx \
+	-v $PATH_LOCAL/gazie:/app \
 	-v $PATH_BACKUP:/var/www/html/data \
 	-p $PORT_EXTERNAL:80 \
 	gazie-nginx:${GAZIE_VERSION}
