@@ -2,8 +2,8 @@
 
 
 # PROXY Configuration
-#HTTP_PROXY=<url_proxy>
-#HTTPS_PROXY=<url_proxy>
+HTTP_PROXY=
+HTTPS_PROXY=
 
 PATH_LOCAL=`pwd`
 # GAZIE Version
@@ -11,8 +11,8 @@ PATH_LOCAL=`pwd`
 GAZIE_VERSION=dev
 
 # Password del database (root)
-PASS_DB=password
-NAME_DB=gazie
+PASS_DB=gazie
+NAME_DB=password
 
 # Nome del servizio col quale ci collegheremo
 # Se utilizzate il PC locale occorre inserire localhost
@@ -32,5 +32,4 @@ PATH_BACKUP=$PATH_LOCAL/data/backup
 
 # Sourceforge https://sourceforge.net USER
 # User for connection svn
-USER_SOURCEFORGE="<username>"
-
+USER_SOURCEFORGE=

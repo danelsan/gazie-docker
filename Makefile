@@ -23,7 +23,7 @@ list:
 
 ## clean:      Clean all data database and downloaded 
 clean:  
-	rm -rf gazie/
-	rm -rf data/
+	sudo rm -rf gazie/
+	sudo rm -rf data/
 
 

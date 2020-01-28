@@ -15,7 +15,7 @@ fi
 # Control gazie directory
 if [ -d "$PATH_LOCAL/gazie" ]; then
   echo "Esiste la directory $PATH_LOCAL/gazie! La elimino!";
-#  rm -rf $PATH_LOCAL/gazie
+  rm -rf $PATH_LOCAL/gazie
   sleep 5
 fi
 
