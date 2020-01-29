@@ -33,3 +33,7 @@ PATH_BACKUP=$PATH_LOCAL/data/backup
 # Sourceforge https://sourceforge.net USER
 # User for connection svn
 USER_SOURCEFORGE=
+
+#Gazie Folder (settare se vuoi testare su sottocartella)
+GAZIE_FOLDER=
+

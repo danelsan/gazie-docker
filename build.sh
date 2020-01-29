@@ -70,6 +70,7 @@ sed "s/localhost/$DNS/" < $PATH_LOCAL/nginx/nginx.conf.example > $PATH_LOCAL/ngi
 # Build Nginx
 echo "Build Nginx..."
 cd nginx
+rm -rf gazie 
 mv ../gazie/ . 
 ./build.sh ${GAZIE_VERSION}
 mv gazie ..
@@ -77,6 +78,7 @@ mv gazie ..
 # Build PHP-FPM
 echo "Build PHP-FPM..."
 cd ../php-fpm
+rm -rf gazie 
 mv ../gazie/ . 
 ./build.sh ${GAZIE_VERSION}
 mv gazie ..

@@ -1,4 +1,5 @@
 gazie/
 data/
 conf
-
+nginx/Dockerfile
+php-fpm/Dockerfile

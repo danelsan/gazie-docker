@@ -3,6 +3,14 @@
 source conf
 
 
+if [ "$GAZIE_FOLDER" != "" ]; then
+  PATH_FOLDER_NGINX="/app/$GAZIE_FOLDER"
+  PATH_FOLDER_PHP="/var/www/html/$GAZIE_FOLDER"
+else
+  PATH_FOLDER_NGINX="/app"
+  PATH_FOLDER_PHP="/var/www/html"
+fi  
+
 mkdir -p $PATH_DB $PATH_BACKUP
 cp -aR gazie/data/* $PATH_BACKUP/
 chmod -R 777 $PATH_BACKUP
@@ -15,23 +23,22 @@ docker run -d -e MYSQL_ROOT_PASSWORD=$PASS_DB -v $PATH_DB:/var/lib/mysql --name 
 if [ "$GAZIE_VERSION" == "dev" ]; then
   # Mount the local path
   docker run -d --link db \
-	-v $PATH_LOCAL/gazie:/var/www/html \
-	-v $PATH_CONFIG:/var/www/html/config/config \
+	-v $PATH_LOCAL/gazie:$PATH_FOLDER_PHP \
+	-v $PATH_CONFIG:$PATH_FOLDER_PHP/config/config \
 	--name phpfpm gazie-docker:${GAZIE_VERSION}
 else
   # Mount whithout local
   docker run -d --link db \
-	-v $PATH_CONFIG:/var/www/html/config/config \
-	-v $PATH_BACKUP:/var/www/html/data \
+	-v $PATH_CONFIG:$PATH_FOLDER_PHP/config/config \
+	-v $PATH_BACKUP:$PATH_FOLDER_PHP/data \
 	--name phpfpm gazie-docker:${GAZIE_VERSION}
 
 fi
   
 docker run -d --link phpfpm \
-	--name opencart \
 	--name nginx \
-	-v $PATH_LOCAL/gazie:/app \
-	-v $PATH_BACKUP:/var/www/html/data \
+	-v $PATH_LOCAL/gazie:$PATH_FOLDER_NGINX \
+	-v $PATH_BACKUP:$PATH_FOLDER_NGINX/data \
 	-p $PORT_EXTERNAL:80 \
 	gazie-nginx:${GAZIE_VERSION}
 

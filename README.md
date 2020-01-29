@@ -21,8 +21,11 @@ l'applicativo docker
 
 https://www.docker.com/
 
+Copiare il file .config.origin in conf
 
-Modificare il file di configurazione
+cp .config.origin conf
+
+Modificare il file di configurazione conf
 
 vi conf
 
