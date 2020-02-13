@@ -14,6 +14,9 @@ GAZIE_VERSION=dev
 PASS_DB=gazie
 NAME_DB=password
 
+# Mysql port local
+MYSQL_PORT=3306
+
 # Nome del servizio col quale ci collegheremo
 # Se utilizzate il PC locale occorre inserire localhost
 DNS=example.local

@@ -19,7 +19,13 @@ echo "Stop all service"
 echo "..."
 source stop.sh
 
-docker run -d -e MYSQL_ROOT_PASSWORD=$PASS_DB -v $PATH_DB:/var/lib/mysql --name db gazie-mariadb:10.2
+docker run -d \
+	-e MYSQL_ROOT_PASSWORD=$PASS_DB \
+	-v $PATH_DB:/var/lib/mysql \
+	-p $MYSQL_PORT:3306 \
+	--name db \
+	gazie-mariadb:10.2
+
 if [ "$GAZIE_VERSION" == "dev" ]; then
   # Mount the local path
   docker run -d --link db \
