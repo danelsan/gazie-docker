@@ -25,7 +25,8 @@ getGAzie() {
 	curl -x $http_proxy -fsSL -o gazie.zip "$LINK_DOWNLOAD"
       fi
       echo "Unzip Gazie $GAZIE_VERSION"
-      unzip  -q gazie.zip  
+      unzip  -q gazie.zip
+      rm -f gazie.zip
     fi
   fi
 
