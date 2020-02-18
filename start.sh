@@ -32,6 +32,14 @@ if [ "$GAZIE_VERSION" == "dev" ]; then
 	-v $PATH_LOCAL/gazie:$PATH_FOLDER_PHP \
 	-v $PATH_CONFIG:$PATH_FOLDER_PHP/config/config \
 	--name phpfpm gazie-docker:${GAZIE_VERSION}
+
+  docker run -d --link phpfpm \
+	--name nginx \
+	-v $PATH_LOCAL/gazie:$PATH_FOLDER_NGINX \
+	-v $PATH_BACKUP:$PATH_FOLDER_NGINX/data \
+	-p $PORT_EXTERNAL:80 \
+	gazie-nginx:${GAZIE_VERSION}
+
 else
   # Mount whithout local
   docker run -d --link db \
@@ -39,14 +47,12 @@ else
 	-v $PATH_BACKUP:$PATH_FOLDER_PHP/data \
 	--name phpfpm gazie-docker:${GAZIE_VERSION}
 
-fi
-  
-docker run -d --link phpfpm \
+  docker run -d --link phpfpm \
 	--name nginx \
-	-v $PATH_LOCAL/gazie:$PATH_FOLDER_NGINX \
 	-v $PATH_BACKUP:$PATH_FOLDER_NGINX/data \
 	-p $PORT_EXTERNAL:80 \
 	gazie-nginx:${GAZIE_VERSION}
+fi
 
 ./run_phpmyadmin.sh
 

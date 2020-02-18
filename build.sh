@@ -40,13 +40,9 @@ else
   sed 's/3306/3307/' < gazie/config/config/gconfig.myconf.default.php | sed 's/localhost/db/' | sed "s/'gazie/'$NAME_DB/" | sed "s/Password', '/Password', '$PASS_DB/" > $PATH_CONFIG/gconfig.myconf.php
 fi
 
-# Valid for gazie version < 7.16
-#sed 's/3306/3307/' < gazie/config/config/gconfig.php | sed 's/localhost/db/' | sed "s/\"gazie/\"$NAME_DB/" | sed "s/\$Password = \"\"/\$Password = \"$PASS_DB\"/" > $PATH_CONFIG/gconfig.myconf.php
-#cp $PATH_CONFIG/gconfig.myconf.php $PATH_CONFIG/gconfig.php
-
 # Config DNS
 echo "Modify DNS..."
-sed "s/localhost/$DNS/" < $PATH_LOCAL/nginx/nginx.conf.example > $PATH_LOCAL/nginx/nginx.conf
+sed "s/localhost/$DNS/" < nginx/nginx.conf.example > nginx/nginx.conf
 
 # Build Nginx
 echo "Build Nginx..."
