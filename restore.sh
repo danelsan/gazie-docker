@@ -18,9 +18,19 @@ if [ "VERIFY_GZIP" == "bad" ]; then
 	exit 1
 fi
 
+echo "-- Drop database " > run.sql
+echo "DROP DATABASE $NAME_DB;" >> run.sql
+echo "CREATE DATABASE $NAME_DB;" >> run.sql
+
+echo "Drop database and create again"
+cat run.sql | docker exec  -i db  /usr/bin/mysql -uroot -p$PASS_DB
+
+rm -f run.sql
+
 echo "Init import backup $DUMP_GZIP"
 zcat $DUMP_GZIP | docker exec  -i db  /usr/bin/mysql -uroot -p$PASS_DB $NAME_DB
 
 echo "Restore database succeded"
 echo "For upgrade go to url: http://$DNS/setup/install/install.php"
+
 
