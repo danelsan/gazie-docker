@@ -1,16 +1,30 @@
 #!/bin/bash
 
 
-GAZIE_VERSION=$1
+help() {
+  echo "Use of build: "
+  echo
+  echo ". build.sh <gazie-version>"
+  echo ". build.sh 7.31"
+  return 1
+}
 
-source ../functions.sh
+if [ "$1" == "" ]; then
+  help
+else
 
-getGAzie $GAZIE_VERSION `pwd` 
+  GAZIE_VERSION=$1
 
-./create-dockerfile.sh
+  source ../functions.sh
 
-APP_NAME=gazie-php:${GAZIE_VERSION}
+  getGAzie $GAZIE_VERSION `pwd` 
 
-docker build -t $APP_NAME .
+  ./create-dockerfile.sh
+
+  APP_NAME=gazie-php:${GAZIE_VERSION}
+
+  docker build -t $APP_NAME .
+
+fi
 
 

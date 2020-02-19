@@ -44,7 +44,7 @@ RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl \
 
 RUN /etc/init.d/sendmail reload
 #RUN echo "php_admin_value[sendmail_path] = /usr/sbin/sendmail -t -i -X /var/log/sendmail/sendmail.log" >> /usr/local/etc/php-fpm.conf
-RUN echo -e "$(hostname -i)\t$(hostname) $(hostname).localhost" >> /etc/hosts
+#RUN echo -e "$(hostname -i)\t$(hostname) $(hostname).localhost" >> /etc/hosts
 
 COPY 	gazie /var/www/html/$GAZIE_FOLDER
 
