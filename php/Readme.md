@@ -1,3 +1,8 @@
+# How to build
+
+. build.sh 7.32
+
+
 # How to use
 
 This is a docker container of __GAzie__.
