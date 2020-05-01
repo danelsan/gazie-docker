@@ -66,7 +66,7 @@ ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
-CMD /etc/init.d/sendmail start
+RUN /etc/init.d/sendmail start
 
 EXPOSE 80
 EOF
