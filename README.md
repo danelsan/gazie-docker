@@ -31,7 +31,7 @@ vi conf
 
 ed eseguire il build per creare le immagini Gazie-Docker, Gazie-Nginx
 
-./build.sh
+make build
 
 Potete per esempio lavorare sul vostro pc senza installare mysql o php, ma semplicemente docker.
 
@@ -40,11 +40,11 @@ Esecuzione Immagini Docker
 
 Per eseguire le immagini docker create scrivere
 
-./start.sh
+make start
 
 Per stoppare le immagini docker eseguire
 
-./stop.sh
+make stop
 
 Backup Database
 ---------------
@@ -67,7 +67,7 @@ Restore Database di Backup
 
 Se hai un backup da ripristinare puoi semplicemente editare:
 
-./restore [ file-dump-gzip ]
+./restore.sh  [ file-dump-gzip ]
 
 Il comando ripristina il database sul database Mariadb.
 

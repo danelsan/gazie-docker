@@ -7,7 +7,7 @@ source conf
 if [ "$DUMP_GZIP" == "" ]; then
 	echo "No dump database insert"
 	echo "Command: ./restore.sh <database.tar.gz>"	
-	exit 1;
+	return 1;
 fi
 
 # Verify gzip file
@@ -15,7 +15,7 @@ VERIFY_GZIP=`gzip -t $DUMP_GZIP  && echo ok || echo bad`
 
 if [ "VERIFY_GZIP" == "bad" ]; then
 	echo "Dump Gzip not valid";
-	exit 1
+	return 1
 fi
 
 echo "-- Drop database " > run.sql
