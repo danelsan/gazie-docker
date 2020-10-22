@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ ! -f conf ]; then
+  echo "File di configurazione not trovato"
+  echo "Eseguire: "
+  echo "cp .config.origin conf"
+  exit 
+fi
+
 source conf
 source functions.sh
 
