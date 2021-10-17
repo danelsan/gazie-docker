@@ -20,9 +20,9 @@ getGAzie() {
       fi
       echo "Download Gazie $GAZIE_VERSION dal sito $LINK_DOWNLOAD"
       if [ "$http_proxy" == "" ]; then
-	curl -fsSL -o gazie.zip "$LINK_DOWNLOAD"
+	curl -fkSL -o gazie.zip "$LINK_DOWNLOAD"
       else
-	curl -x $http_proxy -fsSL -o gazie.zip "$LINK_DOWNLOAD"
+	curl -x $http_proxy -fSLk -o gazie.zip "$LINK_DOWNLOAD"
       fi
       echo "Unzip Gazie $GAZIE_VERSION"
       unzip  -q gazie.zip
