@@ -28,7 +28,8 @@ if [ -d "$PATH_LOCAL/gazie" ]; then
 fi
 
 # Download versions 
-getGAzie $GAZIE_VERSION $PATH_LOCAL $USER_SOURCEFORGE
+getGAzieMirror $GAZIE_VERSION $PATH_LOCAL
+#getGAzie $GAZIE_VERSION $PATH_LOCAL $USER_SOURCEFORGE
 
 
 # Copy configuration and modify

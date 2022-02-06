@@ -1,5 +1,22 @@
 #!/bin/bash
 
+getGAzieMirror() {
+  GAZIE_VERSION=$1
+  PATH_LOCAL=$2
+
+  echo "Scarico versioni GAzie da GAzie-mirror in github"
+  # Download versions
+  if [ "$GAZIE_VERSION" == "dev" ]; then
+    echo "Scarico versione GAZIE di Development: git clone https://github.com/danelsan/GAzie-mirror gazie"
+    git clone https://github.com/danelsan/GAzie-mirror gazie
+    chmod -R 777 gazie
+  else
+    echo "Scarico versione GAZIE di Development: git clone -b v$GAZIE_VERSION https://github.com/danelsan/GAzie-mirror gazie"
+    git clone -b v$GAZIE_VERSION https://github.com/danelsan/GAzie-mirror gazie
+    chmod -R 777 gazie 
+  fi
+}
+
 
 getGAzie() {
   GAZIE_VERSION=$1
