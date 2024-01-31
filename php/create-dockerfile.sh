@@ -9,7 +9,7 @@ else
 fi  
 
 cat > Dockerfile << EOF
-FROM php:7.2-apache
+FROM php:7.4-apache
 
 MAINTAINER Daniele Frulla <daniele.frulla@newstechnology.eu>
 
@@ -20,17 +20,21 @@ RUN apt-get update && apt-get install -y \
         libpng-dev \
 	unzip \ 
         libxml2 \
+        libzip-dev \
         libxml2-dev \
         libxpm-dev \
         libxslt1-dev \
+	libicu-dev \
 	sendmail  \
         vim \
     && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-install -j$(nproc) mysqli pdo pdo_mysql \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg  \
+    && docker-php-ext-configure intl \
     && docker-php-ext-install xsl \
     && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install -j$(nproc) zip 
+    && docker-php-ext-install -j$(nproc) zip \
+    && docker-php-ext-install -j$(nproc) intl
 
 RUN apt-get update \
 	&& apt-get install -y libc-client-dev libkrb5-dev \
